@@ -1,4 +1,4 @@
-package bt_xpath_cach_1_5;
+package bt_xpath;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
