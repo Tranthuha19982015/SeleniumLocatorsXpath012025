@@ -1,10 +1,8 @@
-package BT_Xpath_Bai_1_5;
+package bt_xpath_cach_1_5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
@@ -24,7 +22,7 @@ public class LocatorsCRM {
 //        driver.findElement(By.xpath("//a[normalize-space() = 'Forgot Password?']")).click();
 
 //        Xpath menu Customer
-        driver.findElement(By.xpath("//ul//li//a[@href='https://crm.anhtester.com/admin/clients']")).click();
+        driver.findElement(By.xpath("//ul//a[@href='https://crm.anhtester.com/admin/clients']")).click();
         driver.findElement(By.xpath("//div/a[contains(@href,'https://crm.anhtester.com/admin/clients/client')]")).click();
 
 //        Xpath Add New Customer
@@ -53,7 +51,11 @@ public class LocatorsCRM {
         driver.findElement(By.xpath("//div[@app-field-wrapper = 'country']//input[@type='search']")).sendKeys("Vietnam");
         driver.findElement(By.xpath("//a/span[normalize-space()='Vietnam']")).click();
 
-        driver.findElement(By.xpath("//button[normalize-space()='Save' and contains(@class,'customer-form-submiter')]")).click();
+//        driver.findElement(By.xpath("//button[normalize-space()='Save' and contains(@class,'customer-form-submiter')]")).click();
+
+//        Xpath menu Project
+        driver.findElement(By.xpath("//span[normalize-space()='Projects']/ancestor::a[@href='https://crm.anhtester.com/admin/projects']")).click();
+
 
         Thread.sleep(3000);
         driver.quit();
