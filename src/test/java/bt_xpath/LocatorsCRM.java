@@ -171,4 +171,5 @@ public class LocatorsCRM {
 
     public static String checkboxSendProjectCreatedEmail = "//input[@id='send_created_email']";
     public static String buttonSaveProjects = "//button[normalize-space()='Save']";
+
 }
