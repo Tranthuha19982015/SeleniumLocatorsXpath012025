@@ -1,10 +1,4 @@
-package bt_xpath;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
+package BT_Locators;
 
 public class LocatorsCRM {
 
@@ -89,7 +83,7 @@ public class LocatorsCRM {
     public static String inputWebsite = "//input[@id='website']";
     public static String dropdownGroups = "//button[contains(@data-id,'groups_in')]";
     public static String inputSearchGroups = "//button[contains(@data-id,'groups_in')]/following-sibling::div//input[@type='search']";
-    public static String dropdownCurrency = "button[@data-id='default_currency']";
+    public static String dropdownCurrency = "//button[@data-id='default_currency']";
     public static String inputSearchCurrency = "//button[@data-id='default_currency']/following-sibling::div//input[@type='search']";
     public static String dropdownDefaultLanguage = "//button[@data-id='default_language']";
     public static String inputAdress = "//textarea[@id='address']";
@@ -111,9 +105,9 @@ public class LocatorsCRM {
     // 2. Tab Billing & Shipping
     public static String tabBillingShipping = "//a[normalize-space()='Billing & Shipping' and @role='tab']";
     public static String labelBillingAddress = "//a[normalize-space()='Same as Customer Info']/parent::h4";
-    public static String labelSameAsCustomerInfo = "//a[normalize-space()='Same as Customer Info' and contains(@class,'billing-same-as-customer')]";
+    public static String linkSameAsCustomerInfo = "//a[normalize-space()='Same as Customer Info' and contains(@class,'billing-same-as-customer')]";
     public static String labelShippingAddress = "//span[normalize-space()='Shipping Address']";
-    public static String labelCopyBillingAddress = "//a[normalize-space()='Copy Billing Address']";
+    public static String linkCopyBillingAddress = "//a[normalize-space()='Copy Billing Address']";
     // Billing
     public static String inputBillingStreet = "//textarea[@id='billing_street']";
     public static String inputBillingCity = "//input[@id='billing_city']";
