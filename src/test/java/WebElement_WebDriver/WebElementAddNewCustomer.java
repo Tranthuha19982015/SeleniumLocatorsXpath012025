@@ -24,15 +24,17 @@ public class WebElementAddNewCustomer {
         driver.findElement(By.xpath(LocatorsCRM.inputPassword)).sendKeys("123456");
         driver.findElement(By.xpath(LocatorsCRM.buttonLogin)).click();
 
-        Thread.sleep(3000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorsCRM.linkMenuCustomer)));
 
         // Truy cập menu Customer
         driver.findElement(By.xpath(LocatorsCRM.linkMenuCustomer)).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorsCRM.buttonNewCustomer)));
+//        Thread.sleep(2000);
 
         //Nhấn nút New Customer
         driver.findElement(By.xpath(LocatorsCRM.buttonNewCustomer)).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorsCRM.inputCompany)));
 
         // Nhập thông tin các trường ở tab Customer Detail
         driver.findElement(By.xpath(LocatorsCRM.inputCompany)).sendKeys("Hatest");
@@ -46,19 +48,20 @@ public class WebElementAddNewCustomer {
         driver.findElement(By.xpath(LocatorsCRM.inputSearchGroups)).sendKeys("Information Technology");
         driver.findElement(By.xpath("//li[1]//span[normalize-space()='Information Technology']")).click();
 
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Groups']/following-sibling::div//div[@class='dropdown-menu open']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorsCRM.dropdownCurrency)));
 
         // Chọn Currency
         driver.findElement(By.xpath(LocatorsCRM.dropdownCurrency)).click();
         driver.findElement(By.xpath(LocatorsCRM.inputSearchCurrency)).sendKeys("USD");
         driver.findElement(By.xpath("//span[contains(normalize-space(),'USD')]")).click();
-        Thread.sleep(2500);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorsCRM.dropdownDefaultLanguage)));
 
         // Chọn Default Language
         driver.findElement(By.xpath(LocatorsCRM.dropdownDefaultLanguage)).click();
         driver.findElement(By.xpath("//span[normalize-space()='Vietnamese']")).click();
-        Thread.sleep(2500);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorsCRM.inputAdress)));
 
         driver.findElement(By.xpath(LocatorsCRM.inputAdress)).sendKeys("Thường Tín");
         driver.findElement(By.xpath(LocatorsCRM.inputCity)).sendKeys("Hà Nội");
@@ -68,14 +71,41 @@ public class WebElementAddNewCustomer {
 
         //Chọn Country
         driver.findElement(By.xpath(LocatorsCRM.dropdownCountry)).click();
-        Thread.sleep(1000);
         driver.findElement(By.xpath(LocatorsCRM.inputSearchCountry)).sendKeys("Vietnam");
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//div[normalize-space()='Vietnam']")).click();
-        Thread.sleep(2500);
+        driver.findElement(By.xpath("//span[normalize-space()='Vietnam']")).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//select[@id='country']/following-sibling::div[@class='dropdown-menu open']")));
+
+        // Nhấn tab Billing & Shipping
+        driver.findElement(By.xpath(LocatorsCRM.tabBillingShipping)).click();
 
         // Nhập thông tin các trường ở tab Customer Detail
         driver.findElement(By.xpath(LocatorsCRM.linkSameAsCustomerInfo)).click();
+
+        // kiểm tra xem các input đã được lấy đúng dữ liệu từ tab Customer Detail chưa
+        String customerAddress = driver.findElement(By.xpath(LocatorsCRM.inputAdress)).getAttribute("value");
+        String billingStreet = driver.findElement(By.xpath(LocatorsCRM.inputBillingStreet)).getAttribute("value");
+
+        String customerCity = driver.findElement(By.xpath(LocatorsCRM.inputCity)).getAttribute("value");
+        String billingCity = driver.findElement(By.xpath(LocatorsCRM.inputBillingCity)).getAttribute("value");
+
+        String stateCustomer = driver.findElement(By.xpath(LocatorsCRM.inputState)).getAttribute("value");
+        String billingState = driver.findElement(By.xpath(LocatorsCRM.inputBillingState)).getAttribute("value");
+
+        String customerZipCode = driver.findElement(By.xpath(LocatorsCRM.inputZipCode)).getAttribute("value");
+        String billingZipCode = driver.findElement(By.xpath(LocatorsCRM.inputBillingZipCode)).getAttribute("value");
+
+        String customerCountry = driver.findElement(By.xpath(LocatorsCRM.dropdownCountry)).getAttribute("value");
+        String billingCountry = driver.findElement(By.xpath(LocatorsCRM.dropdownBillingCountry)).getAttribute("value");
+
+        if (billingStreet.equals(customerAddress) &&
+                billingCity.equals(customerCity) &&
+                billingState.equals(stateCustomer) &&
+                billingZipCode.equals(customerZipCode) &&
+                billingCountry.equals(customerCountry)) {
+            System.out.println("Billing đã được lấy đúng dữ liệu từ tab Customer Detail");
+        } else {
+            System.out.println("Billing chưa được lấy đúng dữ liệu từ tab Customer Detail");
+        }
 
         Thread.sleep(2000);
         driver.quit();
