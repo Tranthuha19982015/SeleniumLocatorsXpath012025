@@ -8,9 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.time.chrono.ThaiBuddhistEra;
 
-public class WebElementAddNewCustomer {
+public class AddNewCustomer {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -94,8 +93,8 @@ public class WebElementAddNewCustomer {
         String customerZipCode = driver.findElement(By.xpath(LocatorsCRM.inputZipCode)).getAttribute("value");
         String billingZipCode = driver.findElement(By.xpath(LocatorsCRM.inputBillingZipCode)).getAttribute("value");
 
-        String customerCountry = driver.findElement(By.xpath(LocatorsCRM.dropdownCountry)).getAttribute("value");
-        String billingCountry = driver.findElement(By.xpath(LocatorsCRM.dropdownBillingCountry)).getAttribute("value");
+        String customerCountry = driver.findElement(By.xpath("//button[@data-id='country']/descendant::div[text()='Vietnam']")).getText();
+        String billingCountry = driver.findElement(By.xpath("//button[@data-id='country']/descendant::div[text()='Vietnam']")).getText();
 
         if (billingStreet.equals(customerAddress) &&
                 billingCity.equals(customerCity) &&
@@ -106,6 +105,9 @@ public class WebElementAddNewCustomer {
         } else {
             System.out.println("Billing chưa được lấy đúng dữ liệu từ tab Customer Detail");
         }
+
+        // Nhấn nút Save
+        driver.findElement(By.xpath(LocatorsCRM.buttonSave)).click();
 
         Thread.sleep(2000);
         driver.quit();
