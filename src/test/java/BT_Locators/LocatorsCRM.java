@@ -134,6 +134,8 @@ public class LocatorsCRM {
     public static String switchProgress = "//label[contains(normalize-space(),'Progress')]/following-sibling::div/span";
     public static String dropdownBillingType = "//button[@data-id='billing_type']";
     public static String dropdownStatus = "//button[@data-id='status']";
+    public static String inputRatePerHour = "//input[@id='project_rate_per_hour']";
+    public static String inputTotalRate = "//input[@id='project_cost']";
     public static String inputEstimatedHours = "//input[@id='estimated_hours']";
     public static String dropdownMembers = "//button[contains(@data-id,'project_members')]";
     public static String inputSearchMembers = "//button[contains(@data-id,'project_members')]/following-sibling::div//input[@type='search']";
@@ -165,5 +167,7 @@ public class LocatorsCRM {
 
     public static String checkboxSendProjectCreatedEmail = "//input[@id='send_created_email']";
     public static String buttonSaveProjects = "//button[normalize-space()='Save']";
+
+    public static String customerName = "Hatest_01";
 
 }
