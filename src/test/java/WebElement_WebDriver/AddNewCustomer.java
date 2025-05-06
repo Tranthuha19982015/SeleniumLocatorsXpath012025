@@ -36,7 +36,7 @@ public class AddNewCustomer {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorsCRM.inputCompany)));
 
         // Nhập thông tin các trường ở tab Customer Detail
-        driver.findElement(By.xpath(LocatorsCRM.inputCompany)).sendKeys("Hatest");
+        driver.findElement(By.xpath(LocatorsCRM.inputCompany)).sendKeys(LocatorsCRM.customerName);
         driver.findElement(By.xpath(LocatorsCRM.inputVatNumber)).sendKeys("10%");
         driver.findElement(By.xpath(LocatorsCRM.inputPhone)).sendKeys("0965994325");
         driver.findElement(By.xpath(LocatorsCRM.inputWebsite)).sendKeys("https://hatest.com");
