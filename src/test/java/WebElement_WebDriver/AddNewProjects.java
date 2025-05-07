@@ -42,8 +42,7 @@ public class AddNewProjects {
         // Mô tả lại thao tác nhập tên khách hàng để hệ thống tìm kiếm
         WebElement searchCustomer = driver.findElement(By.xpath(LocatorsCRM.inputSearchCustomer));
         searchCustomer.click();
-        String customerValue = LocatorsCRM.customerName;
-        for (char i : customerValue.toCharArray()) {
+        for (char i : LocatorsCRM.customerValue.toCharArray()) {
             searchCustomer.sendKeys(Character.toString(i));
             Thread.sleep(100);
         }
